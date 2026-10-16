@@ -3,189 +3,794 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mangesh Thak | AI/ML & Python Developer Portfolio</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Mangesh Thak | AI/ML, Deep Learning & Python Developer</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
                     colors: {
-                        darkBg: '#0f172a',
-                        cardBg: '#1e293b',
-                        accent: '#14b8a6',
+                        slate950: '#020617',
+                        slate900: '#0f172a',
+                        slate800: '#1e293b',
+                        accentTeal: '#14b8a6',
+                        accentCyan: '#06b6d4',
                     }
                 }
             }
         }
     </script>
-</head>
-<body class="bg-darkBg text-slate-100 font-sans leading-relaxed selection:bg-teal-500 selection:text-white">
 
-    <!-- Header / Navbar -->
-    <header class="bg-darkBg/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="font-bold text-xl tracking-wider text-teal-400">Mangesh.dev</a>
-            <nav class="hidden sm:flex space-x-8 text-sm font-medium text-slate-300">
-                <a href="#about" class="hover:text-teal-400 transition">About</a>
-                <a href="#projects" class="hover:text-teal-400 transition">Projects</a>
-                <a href="#blog" class="hover:text-teal-400 transition">Blog</a>
-                <a href="#contact" class="hover:text-teal-400 transition">Contact</a>
+    <style>
+        /* Custom glowing background effects and scrollbars */
+        body {
+            background-color: #020617;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        .glow-bg {
+            background: radial-gradient(circle at 50% 0%, rgba(20, 184, 166, 0.15) 0%, rgba(6, 182, 212, 0.05) 35%, rgba(2, 6, 23, 0) 70%);
+        }
+        .card-glow:hover {
+            box-shadow: 0 0 25px -5px rgba(20, 184, 166, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #14b8a6;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-teal-500 selection:text-slate-950 relative">
+
+    <!-- Ambient Top Glow -->
+    <div class="fixed inset-0 glow-bg pointer-events-none z-0"></div>
+
+    <!-- Sticky Navigation Header -->
+    <header class="sticky top-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 transition-all">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-2.5 group">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center text-slate-950 font-bold text-lg shadow-lg shadow-teal-500/20 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-microchip text-sm"></i>
+                </div>
+                <span class="font-bold text-lg tracking-tight text-white">Mangesh<span class="text-teal-400 font-mono">.dev</span></span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                <a href="#about" class="hover:text-teal-400 transition-colors">About</a>
+                <a href="#skills" class="hover:text-teal-400 transition-colors">AI/ML Skills</a>
+                <a href="#projects" class="hover:text-teal-400 transition-colors">Projects</a>
+                <a href="#experience" class="hover:text-teal-400 transition-colors">Experience</a>
+                <a href="#blog" class="hover:text-teal-400 transition-colors">Tech Blog</a>
+                <a href="#contact" class="hover:text-teal-400 transition-colors">Contact</a>
             </nav>
+
+            <!-- Action Buttons -->
+            <div class="hidden md:flex items-center gap-3">
+                <a href="https://github.com/MangeshThak23" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white px-3 py-1.5 rounded-lg text-sm font-medium border border-slate-800 hover:border-slate-700 bg-slate-900/60 transition flex items-center gap-2">
+                    <i class="fa-brands fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="#contact" class="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-slate-950 font-semibold px-4 py-1.5 rounded-lg text-sm shadow-lg shadow-teal-500/20 transition">
+                    Hire Me
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden text-slate-300 hover:text-teal-400 focus:outline-none p-2">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900/95 backdrop-blur-lg border-b border-slate-800 px-6 py-4 space-y-3">
+            <a href="#about" class="block py-2 text-slate-200 hover:text-teal-400 font-medium border-b border-slate-800/50">About</a>
+            <a href="#skills" class="block py-2 text-slate-200 hover:text-teal-400 font-medium border-b border-slate-800/50">AI/ML Skills</a>
+            <a href="#projects" class="block py-2 text-slate-200 hover:text-teal-400 font-medium border-b border-slate-800/50">Projects</a>
+            <a href="#experience" class="block py-2 text-slate-200 hover:text-teal-400 font-medium border-b border-slate-800/50">Experience</a>
+            <a href="#blog" class="block py-2 text-slate-200 hover:text-teal-400 font-medium border-b border-slate-800/50">Tech Blog</a>
+            <a href="#contact" class="block py-2 text-slate-200 hover:text-teal-400 font-medium">Contact</a>
+            <div class="pt-2 flex gap-3">
+                <a href="https://github.com/MangeshThak23" target="_blank" class="w-1/2 text-center py-2 rounded-lg bg-slate-800 text-white text-sm font-medium border border-slate-700">
+                    <i class="fa-brands fa-github mr-1"></i> GitHub
+                </a>
+                <a href="https://linkedin.com/in/mangeshthak" target="_blank" class="w-1/2 text-center py-2 rounded-lg bg-teal-500 text-slate-950 text-sm font-bold">
+                    <i class="fa-brands fa-linkedin mr-1"></i> LinkedIn
+                </a>
+            </div>
         </div>
     </header>
 
-    <!-- Main Content Container -->
-    <main class="max-w-5xl mx-auto px-6 py-12 space-y-20">
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-28 py-12 sm:py-20">
 
-        <!-- Hero / About Section -->
-        <section id="about" class="space-y-6 pt-6">
-            <div class="inline-block px-3 py-1 bg-teal-500/10 border border-teal-500/30 text-teal-400 text-xs font-semibold rounded-full">
-                Subject Matter Expert(Data)
-            </div>
-            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight">
-                Hi, I'm <span class="text-teal-400">Mangesh Thak</span> 👋
-            </h1>
-            <p class="text-lg sm:text-xl text-slate-300 max-w-3xl leading-relaxed">
-                Dedicated professional with <strong class="text-white">4.5 years of experience</strong> at <span class="text-teal-300">Cognizant</span>. Passionate software and AI/ML developer specializing in <strong class="text-white">Python automation, deep learning neural networks, and scalable backend solutions</strong>.
-            </p>
-            
-            <!-- Tech Stack Badges -->
-            <div class="flex flex-wrap gap-2 pt-2">
-                <span class="bg-slate-800 border border-slate-700 text-teal-300 px-3 py-1 rounded-lg text-xs font-medium">Python</span>
-                <span class="bg-slate-800 border border-slate-700 text-teal-300 px-3 py-1 rounded-lg text-xs font-medium">Machine Learning</span>
-                <span class="bg-slate-800 border border-slate-700 text-teal-300 px-3 py-1 rounded-lg text-xs font-medium">Deep Learning (CNN/RNN)</span>
-                <span class="bg-slate-800 border border-slate-700 text-teal-300 px-3 py-1 rounded-lg text-xs font-medium">TensorFlow / Keras</span>
-                <span class="bg-slate-800 border border-slate-700 text-teal-300 px-3 py-1 rounded-lg text-xs font-medium">System Automation</span>
-                <span class="bg-slate-800 border border-slate-700 text-teal-300 px-3 py-1 rounded-lg text-xs font-medium">Git & GitHub</span>
-            </div>
+        <!-- 1. HERO / ABOUT SECTION -->
+        <section id="about" class="pt-4">
+            <div class="flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
+                
+                <!-- Left Column: Intro & CTA -->
+                <div class="w-full lg:w-3/5 space-y-6 text-center lg:text-left">
+                    <!-- Experience Badge -->
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs sm:text-sm font-medium">
+                        <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+                        <span>AI/ML & Python Developer • 4.5 Years Experience</span>
+                    </div>
 
-            <!-- Action Buttons -->
-            <div class="flex gap-4 pt-4">
-                <a href="https://github.com/MangeshThak23" target="_blank" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 px-5 py-2.5 rounded-xl text-sm font-semibold transition flex items-center gap-2">
-                    GitHub Profile
-                </a>
-                <a href="https://linkedin.com/in/mangeshthak" target="_blank" class="bg-teal-600 hover:bg-teal-500 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition shadow-lg shadow-teal-600/20">
-                    LinkedIn
-                </a>
+                    <!-- Main Headlines -->
+                    <div class="space-y-3">
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white">
+                            Hi, I'm <span class="bg-gradient-to-r from-teal-400 via-cyan-400 to-sky-400 bg-clip-text text-transparent">Mangesh Thak</span>
+                        </h1>
+                        <h2 class="text-xl sm:text-2xl font-semibold text-slate-300 leading-snug">
+                            Building Intelligent AI/ML Models, Deep Learning Architectures & Scalable Python Automation.
+                        </h2>
+                    </div>
+
+                    <!-- Bio Description -->
+                    <p class="text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Dedicated professional with <strong class="text-slate-200 font-semibold">4.5 years of industry experience at Cognizant</strong>. Specializing in Machine Learning, Deep Learning (<span class="text-teal-300 font-mono text-sm">CNNs, RNNs, LSTMs, Transformers</span>), Generative AI (<span class="text-teal-300 font-mono text-sm">LLMs, RAG pipelines</span>), and end-to-end Python system automation.
+                    </p>
+
+                    <!-- Quick Highlights Pills -->
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-2 pt-1">
+                        <span class="px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-xs font-mono text-teal-400">#DeepLearning</span>
+                        <span class="px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-xs font-mono text-cyan-400">#ComputerVision</span>
+                        <span class="px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-xs font-mono text-sky-400">#LLMs_&_RAG</span>
+                        <span class="px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-xs font-mono text-emerald-400">#PythonAutomation</span>
+                    </div>
+
+                    <!-- Primary Action Buttons -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#projects" class="px-6 py-3 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-slate-950 font-bold text-sm shadow-lg shadow-teal-500/20 transition transform hover:-translate-y-0.5 flex items-center gap-2">
+                            <span>Explore Projects</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                        <a href="https://github.com/MangeshThak23" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 font-semibold text-sm transition flex items-center gap-2">
+                            <i class="fa-brands fa-github text-base text-teal-400"></i>
+                            <span>GitHub Profile</span>
+                        </a>
+                        <a href="https://linkedin.com/in/mangeshthak" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 font-semibold text-sm transition flex items-center gap-2">
+                            <i class="fa-brands fa-linkedin text-base text-cyan-400"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Profile Photo Card with Automatic Fallback -->
+                <div class="w-full lg:w-2/5 flex flex-col items-center">
+                    <div class="relative group">
+                        <!-- Animated glowing ring behind photo -->
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-teal-500 via-cyan-500 to-sky-500 rounded-full blur-md opacity-60 group-hover:opacity-100 transition duration-500"></div>
+                        
+                        <!-- Avatar Container: Loads profile.jpg if uploaded to GitHub, otherwise displays stylized 'MT' avatar -->
+                        <div class="relative w-44 h-44 sm:w-56 sm:h-56 rounded-full bg-slate-900 border-4 border-slate-800 overflow-hidden flex items-center justify-center shadow-2xl">
+                            <img 
+                                src="profile.jpg" 
+                                alt="Mangesh Thak" 
+                                class="w-full h-full object-cover"
+                                onerror="this.style.display='none'; document.getElementById('avatar-fallback').style.display='flex';"
+                            >
+                            <!-- Fallback Stylized Avatar if profile.jpg is not yet uploaded -->
+                            <div id="avatar-fallback" class="hidden w-full h-full bg-gradient-to-br from-slate-900 via-slate-800 to-teal-950 flex-col items-center justify-center text-center p-4">
+                                <span class="text-5xl sm:text-6xl font-extrabold bg-gradient-to-br from-teal-400 to-cyan-300 bg-clip-text text-transparent tracking-wider font-mono">MT</span>
+                                <span class="text-[11px] font-mono text-teal-400/80 mt-2 uppercase tracking-widest">AI / ML Dev</span>
+                            </div>
+                        </div>
+
+                        <!-- Floating Status Badge -->
+                        <div class="absolute bottom-2 right-2 bg-slate-900/95 backdrop-blur-md border border-slate-700 px-3 py-1.5 rounded-full shadow-lg flex items-center gap-2">
+                            <i class="fa-solid fa-brain text-teal-400 text-xs"></i>
+                            <span class="text-xs font-semibold text-slate-200">AI & Automation</span>
+                        </div>
+                    </div>
+
+                    <!-- Mini Profile Caption -->
+                    <div class="mt-5 text-center">
+                        <p class="text-sm font-semibold text-slate-200">Mangesh Thak</p>
+                        <p class="text-xs text-slate-400 flex items-center justify-center gap-1.5 mt-0.5">
+                            <i class="fa-solid fa-location-dot text-teal-400"></i>
+                            <span>Pune, Maharashtra, India</span>
+                        </p>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="space-y-8">
-            <div class="border-b border-slate-800 pb-4">
-                <h2 class="text-3xl font-bold tracking-tight">Featured Projects</h2>
-                <p class="text-sm text-slate-400 mt-1">Key automation and deep learning projects developed in Python.</p>
+        <!-- 2. TECHNICAL EXPERTISE / AI & ML SKILLS SECTION -->
+        <section id="skills" class="space-y-10">
+            <div class="text-center max-w-3xl mx-auto space-y-3">
+                <span class="text-xs font-mono uppercase tracking-widest text-teal-400 font-semibold">Core Competencies</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white">AI, Deep Learning & Automation Stack</h2>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    Comprehensive expertise across neural network architectures, classic machine learning algorithms, generative AI pipelines, and enterprise Python system automation.
+                </p>
             </div>
-            
+
+            <!-- 4-Column Categorized Skill Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Project 1 -->
-                <div class="bg-cardBg border border-slate-800 p-6 rounded-2xl space-y-4 hover:border-teal-500/50 transition group">
-                    <h3 class="font-bold text-xl text-teal-300 group-hover:text-teal-400 transition">Platform Surveillance System</h3>
-                    <p class="text-sm text-slate-300 leading-relaxed">
-                        An automated system monitoring utility built in Python utilizing `psutil` and real-time process tracking mechanisms to maintain system health and track resource utilization.
-                    </p>
-                    <div class="flex flex-wrap gap-2 pt-2 text-xs">
-                        <span class="bg-slate-900 text-teal-400 px-2.5 py-1 rounded-md border border-slate-800">Python</span>
-                        <span class="bg-slate-900 text-teal-400 px-2.5 py-1 rounded-md border border-slate-800">Process Automation</span>
-                        <span class="bg-slate-900 text-teal-400 px-2.5 py-1 rounded-md border border-slate-800">psutil</span>
+                
+                <!-- Category 1: Deep Learning & Generative AI -->
+                <div class="bg-slate-900/70 border border-slate-800/90 rounded-2xl p-6 space-y-4 card-glow transition-all">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-11 h-11 rounded-xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 text-xl">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Deep Learning & GenAI</h3>
+                            <p class="text-xs text-slate-400">Neural Architectures & Modern LLMs</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-teal-300">Convolutional Neural Networks (CNN)</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-teal-300">RNN & LSTM</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-teal-300">Transformer Architecture</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-teal-300">Attention Mechanisms</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-teal-300">Large Language Models (LLMs)</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-teal-300">RAG Pipelines</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-teal-300">Prompt Engineering</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-teal-300">Computer Vision</span>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="bg-cardBg border border-slate-800 p-6 rounded-2xl space-y-4 hover:border-teal-500/50 transition group">
-                    <h3 class="font-bold text-xl text-teal-300 group-hover:text-teal-400 transition">Surface Crack Detection CNN</h3>
-                    <p class="text-sm text-slate-300 leading-relaxed">
-                        Deep learning computer vision model built using TensorFlow and Keras to automate structural defect image classification and surface crack detection.
-                    </p>
-                    <div class="flex flex-wrap gap-2 pt-2 text-xs">
-                        <span class="bg-slate-900 text-teal-400 px-2.5 py-1 rounded-md border border-slate-800">TensorFlow / Keras</span>
-                        <span class="bg-slate-900 text-teal-400 px-2.5 py-1 rounded-md border border-slate-800">Computer Vision</span>
-                        <span class="bg-slate-900 text-teal-400 px-2.5 py-1 rounded-md border border-slate-800">CNN</span>
+                <!-- Category 2: Machine Learning & Data Science -->
+                <div class="bg-slate-900/70 border border-slate-800/90 rounded-2xl p-6 space-y-4 card-glow transition-all">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-11 h-11 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl">
+                            <i class="fa-solid fa-chart-scatter"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Machine Learning & Data Science</h3>
+                            <p class="text-xs text-slate-400">Predictive Modeling & Feature Engineering</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-cyan-300">Supervised & Unsupervised Learning</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-cyan-300">Scikit-Learn</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-cyan-300">Regression & Classification</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-cyan-300">Decision Trees & Random Forest</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-cyan-300">K-Means Clustering</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-cyan-300">Pandas & NumPy</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-cyan-300">Matplotlib & Data Visualization</span>
                     </div>
                 </div>
 
-                <!-- Project 3 -->
-                <div class="bg-cardBg border border-slate-800 p-6 rounded-2xl space-y-4 hover:border-teal-500/50 transition group">
-                    <h3 class="font-bold text-xl text-teal-300 group-hover:text-teal-400 transition">Marvellous Data Shield</h3>
-                    <p class="text-sm text-slate-300 leading-relaxed">
-                        Automated incremental Python backup system that handles recursive directory traversal safely and generates compressed archive backups of target directories.
-                    </p>
-                    <div class="flex flex-wrap gap-2 pt-2 text-xs">
-                        <span class="bg-slate-900 text-teal-400 px-2.5 py-1 rounded-md border border-slate-800">Python</span>
-                        <span class="bg-slate-900 text-teal-400 px-2.5 py-1 rounded-md border border-slate-800">File Management</span>
-                        <span class="bg-slate-900 text-teal-400 px-2.5 py-1 rounded-md border border-slate-800">Automation</span>
+                <!-- Category 3: AI Frameworks & Libraries -->
+                <div class="bg-slate-900/70 border border-slate-800/90 rounded-2xl p-6 space-y-4 card-glow transition-all">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-11 h-11 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 text-xl">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Frameworks & Libraries</h3>
+                            <p class="text-xs text-slate-400">Production AI & Deep Learning Tooling</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-sky-300">TensorFlow</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-sky-300">Keras</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-sky-300">PyTorch</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-sky-300">Hugging Face Transformers</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-sky-300">OpenCV / Image Processing</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-sky-300">psutil</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-sky-300">schedule</span>
                     </div>
                 </div>
 
-                <!-- Project 4 -->
-                <div class="bg-cardBg border border-slate-800 p-6 rounded-2xl space-y-4 hover:border-teal-500/50 transition group">
-                    <h3 class="font-bold text-xl text-teal-300 group-hover:text-teal-400 transition">Directory Scanner Utility</h3>
-                    <p class="text-sm text-slate-300 leading-relaxed">
-                        Custom directory scanning and automated traversal utility designed for efficient file organization and deep system auditing.
+                <!-- Category 4: Python & System Automation -->
+                <div class="bg-slate-900/70 border border-slate-800/90 rounded-2xl p-6 space-y-4 card-glow transition-all">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xl">
+                            <i class="fa-brands fa-python"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Python & System Automation</h3>
+                            <p class="text-xs text-slate-400">Scalable Scripting & DevOps Workflows</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-emerald-300">Python 3 (OOP & Modular Design)</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-emerald-300">Process & Resource Monitoring</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-emerald-300">OS & Recursive Directory Traversal</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-emerald-300">Incremental Backup Systems</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-emerald-300">Git & GitHub Actions (Cron)</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-medium text-emerald-300">VS Code & Jupyter</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. FEATURED PROJECTS SECTION (WITH INTERACTIVE FILTER) -->
+        <section id="projects" class="space-y-10">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-800 pb-6">
+                <div class="space-y-2">
+                    <span class="text-xs font-mono uppercase tracking-widest text-teal-400 font-semibold">Portfolio Showcase</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white">Featured AI & Automation Projects</h2>
+                    <p class="text-slate-400 text-sm sm:text-base">Hands-on implementations in Computer Vision, Deep Learning, and Python System Engineering.</p>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="flex items-center gap-2 bg-slate-900 p-1.5 rounded-xl border border-slate-800 self-start">
+                    <button onclick="filterProjects('all')" id="tab-all" class="px-4 py-1.5 rounded-lg text-xs font-semibold bg-teal-500 text-slate-950 transition">
+                        All Projects
+                    </button>
+                    <button onclick="filterProjects('ai')" id="tab-ai" class="px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white transition">
+                        AI / Deep Learning
+                    </button>
+                    <button onclick="filterProjects('automation')" id="tab-automation" class="px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white transition">
+                        Python Automation
+                    </button>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <!-- Project 1: Surface Crack Detection CNN -->
+                <div data-category="ai" class="project-card bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between space-y-5 card-glow transition-all group">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full text-xs font-mono font-medium bg-teal-500/10 text-teal-400 border border-teal-500/20">
+                                Deep Learning • Computer Vision
+                            </span>
+                            <a href="https://github.com/MangeshThak23" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-teal-400 transition" title="View on GitHub">
+                                <i class="fa-brands fa-github text-xl"></i>
+                            </a>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-teal-400 transition">
+                            Surface Crack Detection using CNN
+                        </h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Designed and trained a Convolutional Neural Network (CNN) utilizing TensorFlow and Keras for automated structural defect image classification. Implements multi-layer feature extraction, max-pooling, and dropout regularization to accurately detect surface micro-cracks.
+                        </p>
+                    </div>
+                    <div class="space-y-4 pt-2 border-t border-slate-800/80">
+                        <div class="flex flex-wrap gap-2 text-xs font-mono">
+                            <span class="bg-slate-950 text-teal-300 px-2.5 py-1 rounded border border-slate-800">TensorFlow</span>
+                            <span class="bg-slate-950 text-teal-300 px-2.5 py-1 rounded border border-slate-800">Keras</span>
+                            <span class="bg-slate-950 text-teal-300 px-2.5 py-1 rounded border border-slate-800">CNN</span>
+                            <span class="bg-slate-950 text-teal-300 px-2.5 py-1 rounded border border-slate-800">Image Classification</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Platform Surveillance System -->
+                <div data-category="automation" class="project-card bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between space-y-5 card-glow transition-all group">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full text-xs font-mono font-medium bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                                System Automation • Monitoring
+                            </span>
+                            <a href="https://github.com/MangeshThak23" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-cyan-400 transition" title="View on GitHub">
+                                <i class="fa-brands fa-github text-xl"></i>
+                            </a>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition">
+                            Platform Surveillance System
+                        </h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            An automated real-time system monitoring utility built in Python using <code class="text-cyan-300 font-mono">psutil</code> and <code class="text-cyan-300 font-mono">schedule</code>. Tracks active background processes, CPU/RAM utilization, memory footprints, and generates timestamped diagnostic log files automatically.
+                        </p>
+                    </div>
+                    <div class="space-y-4 pt-2 border-t border-slate-800/80">
+                        <div class="flex flex-wrap gap-2 text-xs font-mono">
+                            <span class="bg-slate-950 text-cyan-300 px-2.5 py-1 rounded border border-slate-800">Python</span>
+                            <span class="bg-slate-950 text-cyan-300 px-2.5 py-1 rounded border border-slate-800">psutil</span>
+                            <span class="bg-slate-950 text-cyan-300 px-2.5 py-1 rounded border border-slate-800">Process Tracking</span>
+                            <span class="bg-slate-950 text-cyan-300 px-2.5 py-1 rounded border border-slate-800">Automated Logging</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Marvellous Data Shield -->
+                <div data-category="automation" class="project-card bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between space-y-5 card-glow transition-all group">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full text-xs font-mono font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                                Data Security • File Automation
+                            </span>
+                            <a href="https://github.com/MangeshThak23" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-emerald-400 transition" title="View on GitHub">
+                                <i class="fa-brands fa-github text-xl"></i>
+                            </a>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition">
+                            Marvellous Data Shield
+                        </h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Automated incremental Python backup engine that performs safe recursive directory traversal, identifies newly modified datasets or files, and creates compressed archive backups on a scheduled interval to prevent data loss.
+                        </p>
+                    </div>
+                    <div class="space-y-4 pt-2 border-t border-slate-800/80">
+                        <div class="flex flex-wrap gap-2 text-xs font-mono">
+                            <span class="bg-slate-950 text-emerald-300 px-2.5 py-1 rounded border border-slate-800">Python</span>
+                            <span class="bg-slate-950 text-emerald-300 px-2.5 py-1 rounded border border-slate-800">OS & Shutil</span>
+                            <span class="bg-slate-950 text-emerald-300 px-2.5 py-1 rounded border border-slate-800">Incremental Backup</span>
+                            <span class="bg-slate-950 text-emerald-300 px-2.5 py-1 rounded border border-slate-800">Automation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Directory Scanner Utility -->
+                <div data-category="automation" class="project-card bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between space-y-5 card-glow transition-all group">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full text-xs font-mono font-medium bg-sky-500/10 text-sky-400 border border-sky-500/20">
+                                OOP Utility • File Systems
+                            </span>
+                            <a href="https://github.com/MangeshThak23" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-sky-400 transition" title="View on GitHub">
+                                <i class="fa-brands fa-github text-xl"></i>
+                            </a>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-sky-400 transition">
+                            DirectoryScanner & Auditing Utility
+                        </h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Custom object-oriented directory scanning and automated traversal tool engineered for deep file system auditing, checksum verification, duplicate detection, and automated storage cleanup.
+                        </p>
+                    </div>
+                    <div class="space-y-4 pt-2 border-t border-slate-800/80">
+                        <div class="flex flex-wrap gap-2 text-xs font-mono">
+                            <span class="bg-slate-950 text-sky-300 px-2.5 py-1 rounded border border-slate-800">Python OOP</span>
+                            <span class="bg-slate-950 text-sky-300 px-2.5 py-1 rounded border border-slate-800">OS Module</span>
+                            <span class="bg-slate-950 text-sky-300 px-2.5 py-1 rounded border border-slate-800">File Auditing</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4. EXPERIENCE & EDUCATION TIMELINE -->
+        <section id="experience" class="space-y-10">
+            <div class="space-y-2 border-b border-slate-800 pb-6">
+                <span class="text-xs font-mono uppercase tracking-widest text-teal-400 font-semibold">Career Journey</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white">Professional Experience & Education</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Work Experience Card -->
+                <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 relative overflow-hidden">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 text-xl shrink-0">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-mono text-teal-400 font-semibold">4.5 Years Experience</span>
+                                <h3 class="text-xl font-bold text-white">Cognizant</h3>
+                                <p class="text-sm text-slate-300 font-medium">Senior Process Executive • AI/ML & Python Developer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        4.5 years of dedicated industry experience delivering high-accuracy process operations, developing automated Python utilities, and building machine learning & deep learning solutions to streamline workflows and improve analytical precision.
                     </p>
-                    <div class="flex flex-wrap gap-2 pt-2 text-xs">
-                        <span class="bg-slate-900 text-teal-400 px-2.5 py-1 rounded-md border border-slate-800">Python</span>
-                        <span class="bg-slate-900 text-teal-400 px-2.5 py-1 rounded-md border border-slate-800">OS Module</span>
+                    <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-check text-teal-400 mt-1"></i>
+                            <span>Engineered automated Python scripts for system surveillance, file backups, and process optimization.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-check text-teal-400 mt-1"></i>
+                            <span>Applied Machine Learning and Deep Learning architectures (CNNs, Transformers, RAG) to solve complex classification and data extraction challenges.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Education & Certifications Card -->
+                <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl shrink-0">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-mono text-cyan-400 font-semibold">Academic Background</span>
+                                <h3 class="text-xl font-bold text-white">Savitribai Phule Pune University</h3>
+                                <p class="text-sm text-slate-300 font-medium">Bachelor of Science (B.Sc.) in Computer Science</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            Strong academic foundation in Computer Science, Data Structures, Object-Oriented Programming, Operating Systems, and Mathematical Foundations for Machine Learning.
+                        </p>
+                    </div>
+
+                    <!-- Specialized Focus Box -->
+                    <div class="p-4 rounded-xl bg-slate-950 border border-slate-800/90 flex items-center justify-between">
+                        <div class="space-y-0.5">
+                            <p class="text-xs font-mono text-teal-400">Continuous Learning Focus</p>
+                            <p class="text-sm font-semibold text-slate-200">Deep Learning, LLMs, RAG & System Automation</p>
+                        </div>
+                        <i class="fa-solid fa-code-branch text-teal-400 text-xl"></i>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Blog Section -->
-        <section id="blog" class="space-y-8">
-            <div class="border-b border-slate-800 pb-4">
-                <h2 class="text-3xl font-bold tracking-tight">Technical Blog Posts</h2>
-                <p class="text-sm text-slate-400 mt-1">Sharing learnings, architectural deep-dives, and automation insights.</p>
+        <!-- 5. TECHNICAL BLOG POSTS SECTION (WITH INTERACTIVE READER MODAL) -->
+        <section id="blog" class="space-y-10">
+            <div class="space-y-2 border-b border-slate-800 pb-6">
+                <span class="text-xs font-mono uppercase tracking-widest text-teal-400 font-semibold">Knowledge Sharing</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white">Technical Blog Posts</h2>
+                <p class="text-slate-400 text-sm sm:text-base">Architectural deep-dives into Neural Networks, Generative AI, and Python Automation. Click any article to read.</p>
             </div>
 
-            <div class="space-y-4">
-                <!-- Blog 1 (New) -->
-                <article class="bg-cardBg/60 border border-slate-800 p-6 rounded-2xl space-y-2 hover:bg-cardBg transition cursor-pointer">
-                    <div class="text-xs text-teal-400 font-semibold">October 16, 2026 • 5 min read</div>
-                    <h3 class="text-xl font-bold text-slate-100">Building a Real-Time Platform Surveillance System with Python & psutil</h3>
-                    <p class="text-sm text-slate-400 leading-relaxed">A practical deep-dive into tracking system health, monitoring active background processes, and automating resource usage alerts using Python.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Blog Card 1 -->
+                <article onclick="openBlogModal(0)" class="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between space-y-4 hover:border-teal-500/60 cursor-pointer card-glow transition group">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between text-xs font-mono text-teal-400">
+                            <span>October 16, 2026</span>
+                            <span>5 min read</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white group-hover:text-teal-400 transition leading-snug">
+                            Building a Real-Time Platform Surveillance System with Python & psutil
+                        </h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            A practical deep-dive into tracking system health, monitoring active background processes, and automating resource usage alerts using Python.
+                        </p>
+                    </div>
+                    <div class="pt-2 flex items-center text-xs font-semibold text-teal-400 group-hover:translate-x-1 transition-transform">
+                        <span>Read Full Article</span>
+                        <i class="fa-solid fa-arrow-right ml-1.5"></i>
+                    </div>
                 </article>
 
-                <!-- Blog 2 -->
-                <article class="bg-cardBg/60 border border-slate-800 p-6 rounded-2xl space-y-2 hover:bg-cardBg transition cursor-pointer">
-                    <div class="text-xs text-teal-400 font-semibold">October 10, 2026 • 5 min read</div>
-                    <h3 class="text-xl font-bold text-slate-100">Automating System Maintenance & Backups with Python</h3>
-                    <p class="text-sm text-slate-400 leading-relaxed">A detailed breakdown of how to build incremental file backup systems using Python, handling recursive directory traversal safely and efficiently.</p>
+                <!-- Blog Card 2 -->
+                <article onclick="openBlogModal(1)" class="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between space-y-4 hover:border-teal-500/60 cursor-pointer card-glow transition group">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between text-xs font-mono text-cyan-400">
+                            <span>October 10, 2026</span>
+                            <span>6 min read</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white group-hover:text-cyan-400 transition leading-snug">
+                            Understanding Convolutional Neural Networks (CNNs) for Surface Defect Detection
+                        </h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            Core architectural concepts of CNNs, convolutional filters, pooling layers, and practical optimization techniques for industrial computer vision.
+                        </p>
+                    </div>
+                    <div class="pt-2 flex items-center text-xs font-semibold text-cyan-400 group-hover:translate-x-1 transition-transform">
+                        <span>Read Full Article</span>
+                        <i class="fa-solid fa-arrow-right ml-1.5"></i>
+                    </div>
                 </article>
 
-                <!-- Blog 3 -->
-                <article class="bg-cardBg/60 border border-slate-800 p-6 rounded-2xl space-y-2 hover:bg-cardBg transition cursor-pointer">
-                    <div class="text-xs text-teal-400 font-semibold">September 28, 2026 • 4 min read</div>
-                    <h3 class="text-xl font-bold text-slate-100">Understanding Convolutional Neural Networks for Surface Defect Detection</h3>
-                    <p class="text-sm text-slate-400 leading-relaxed">Core architectural concepts of CNNs, pooling layers, feature maps, and practical optimization techniques for industrial computer vision.</p>
+                <!-- Blog Card 3 -->
+                <article onclick="openBlogModal(2)" class="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between space-y-4 hover:border-teal-500/60 cursor-pointer card-glow transition group">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between text-xs font-mono text-sky-400">
+                            <span>September 28, 2026</span>
+                            <span>7 min read</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white group-hover:text-sky-400 transition leading-snug">
+                            Exploring RAG Pipelines, Transformers & Attention Mechanisms in Modern LLMs
+                        </h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            How Retrieval-Augmented Generation (RAG) and self-attention mechanisms eliminate hallucinations and ground Large Language Models in enterprise data.
+                        </p>
+                    </div>
+                    <div class="pt-2 flex items-center text-xs font-semibold text-sky-400 group-hover:translate-x-1 transition-transform">
+                        <span>Read Full Article</span>
+                        <i class="fa-solid fa-arrow-right ml-1.5"></i>
+                    </div>
                 </article>
+
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="bg-cardBg border border-slate-800 p-10 rounded-3xl text-center space-y-6 shadow-xl">
-            <h2 class="text-3xl font-bold">Let's Connect</h2>
-            <p class="text-sm sm:text-base text-slate-300 max-w-lg mx-auto leading-relaxed">
-                Open to software engineering, automation, and AI/ML opportunities. Feel free to reach out via email or connect on LinkedIn.
-            </p>
-            <div>
-                <a href="mailto:mangesht.2324@gmail.com" class="text-teal-400 font-semibold text-lg hover:underline">
-                    mangesht.2324@gmail.com
-                </a>
-            </div>
-            <div class="flex justify-center gap-6 pt-2">
-                <a href="https://linkedin.com/in/mangeshthak" target="_blank" class="text-sm text-slate-400 hover:text-teal-400 transition">LinkedIn</a>
-                <a href="https://github.com/MangeshThak23" target="_blank" class="text-sm text-slate-400 hover:text-teal-400 transition">GitHub</a>
+        <!-- 6. CONTACT SECTION -->
+        <section id="contact" class="pt-4">
+            <div class="bg-gradient-to-br from-slate-900 via-slate-900 to-teal-950/40 border border-slate-800 rounded-3xl p-8 sm:p-12 text-center space-y-6 shadow-2xl relative overflow-hidden">
+                <div class="max-w-2xl mx-auto space-y-4">
+                    <span class="px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-400 text-xs font-mono uppercase tracking-widest">
+                        Open to Opportunities
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Let's Build Intelligent Solutions Together</h2>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Currently open to AI/ML Engineer, Deep Learning Developer, and Python Automation roles. Feel free to reach out via email or connect with me on LinkedIn and GitHub.
+                    </p>
+                </div>
+
+                <!-- Email Box + Copy Button -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                    <a href="mailto:mangesht.2324@gmail.com" class="px-5 py-3 rounded-xl bg-slate-950 border border-slate-800 text-teal-400 font-mono text-sm sm:text-base hover:border-teal-500/50 transition flex items-center gap-2.5">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>mangesht.2324@gmail.com</span>
+                    </a>
+                    <button onclick="copyEmail()" class="px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-medium border border-slate-700 transition flex items-center gap-2">
+                        <i class="fa-regular fa-copy"></i>
+                        <span id="copy-email-text">Copy Email</span>
+                    </button>
+                </div>
+
+                <!-- Social Links -->
+                <div class="flex items-center justify-center gap-6 pt-4">
+                    <a href="https://github.com/MangeshThak23" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-teal-400 transition flex items-center gap-2 text-sm font-medium">
+                        <i class="fa-brands fa-github text-lg"></i>
+                        <span>github.com/MangeshThak23</span>
+                    </a>
+                    <a href="https://linkedin.com/in/mangeshthak" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-cyan-400 transition flex items-center gap-2 text-sm font-medium">
+                        <i class="fa-brands fa-linkedin text-lg"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
             </div>
         </section>
 
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-800 mt-20 py-8 text-center text-xs text-slate-500">
-        <p>© 2026 Mangesh Thak. All rights reserved. Hosted on GitHub Pages.</p>
+    <footer class="border-t border-slate-800/80 py-8 text-center text-xs text-slate-500">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 Mangesh Thak. Built with HTML & Tailwind CSS.</p>
+            <p class="font-mono text-slate-400">AI/ML • Deep Learning • Python Automation</p>
+        </div>
     </footer>
 
+    <!-- BLOG READER MODAL -->
+    <div id="blog-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden">
+            <!-- Modal Header -->
+            <div class="px-6 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/50">
+                <span id="modal-date" class="text-xs font-mono text-teal-400"></span>
+                <button onclick="closeBlogModal()" class="text-slate-400 hover:text-white p-1.5 rounded-lg bg-slate-800/60 hover:bg-slate-800 transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <!-- Modal Body -->
+            <div class="p-6 sm:p-8 overflow-y-auto space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+                <h3 id="modal-title" class="text-xl sm:text-2xl font-bold text-white"></h3>
+                <div id="modal-content" class="space-y-4"></div>
+            </div>
+            <!-- Modal Footer -->
+            <div class="px-6 py-3 border-t border-slate-800 bg-slate-950/50 flex justify-end">
+                <button onclick="closeBlogModal()" class="px-4 py-2 rounded-lg bg-teal-500 text-slate-950 font-semibold text-xs hover:bg-teal-400 transition">
+                    Close Article
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // 1. Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 2. Interactive Project Filtering
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            const tabs = {
+                all: document.getElementById('tab-all'),
+                ai: document.getElementById('tab-ai'),
+                automation: document.getElementById('tab-automation')
+            };
+
+            // Reset tab styles
+            Object.values(tabs).forEach(tab => {
+                tab.className = "px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white transition";
+            });
+            // Highlight active tab
+            tabs[category].className = "px-4 py-1.5 rounded-lg text-xs font-semibold bg-teal-500 text-slate-950 transition";
+
+            // Show/hide cards
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // 3. Copy Email to Clipboard
+        function copyEmail() {
+            const email = "mangesht.2324@gmail.com";
+            const tempInput = document.createElement("input");
+            tempInput.value = email;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            const copyText = document.getElementById("copy-email-text");
+            copyText.innerText = "Copied!";
+            setTimeout(() => {
+                copyText.innerText = "Copy Email";
+            }, 2500);
+        }
+
+        // 4. Blog Modal Data & Functions
+        const blogPosts = [
+            {
+                date: "October 16, 2026 • Python Automation",
+                title: "Building a Real-Time Platform Surveillance System with Python & psutil",
+                content: `
+                    <p>Monitoring system resources and active background processes is critical for maintaining server stability and diagnosing performance bottlenecks. Using Python's <code>psutil</code> and <code>schedule</code> libraries, we can engineer a lightweight, cross-platform surveillance daemon.</p>
+                    <h4 class="text-white font-semibold pt-2">Key Architectural Components:</h4>
+                    <ul class="list-disc pl-5 space-y-1.5">
+                        <li><strong>Process Enumeration:</strong> Iterating over <code>psutil.process_iter()</code> to capture PID, process name, user, CPU percentage, and Resident Set Size (RSS) memory usage.</li>
+                        <li><strong>Automated Log Rotation:</strong> Generating timestamped log files inside a dedicated directory to keep historical audit trails clean.</li>
+                        <li><strong>Fault Tolerance:</strong> Wrapping process inspection inside <code>try-except</code> blocks to gracefully handle <code>NoSuchProcess</code> and <code>AccessDenied</code> exceptions.</li>
+                    </ul>
+                    <p class="pt-2">This architecture forms the backbone of the <strong>Platform Surveillance System</strong> project, enabling zero-touch monitoring on both Windows and Linux environments.</p>
+                `
+            },
+            {
+                date: "October 10, 2026 • Deep Learning & Computer Vision",
+                title: "Understanding Convolutional Neural Networks (CNNs) for Surface Defect Detection",
+                content: `
+                    <p>Manual inspection of industrial surfaces for micro-cracks is slow and error-prone. Convolutional Neural Networks (CNNs) automate this process by learning hierarchical spatial features directly from raw image pixels.</p>
+                    <h4 class="text-white font-semibold pt-2">Model Pipeline in TensorFlow & Keras:</h4>
+                    <ul class="list-disc pl-5 space-y-1.5">
+                        <li><strong>Convolutional Layers (Conv2D):</strong> Apply learnable filters to detect low-level edges and textures in early layers, progressing to complex crack patterns in deeper layers.</li>
+                        <li><strong>MaxPooling2D:</strong> Downsamples feature maps to reduce computational complexity and provide spatial invariance.</li>
+                        <li><strong>Dropout & Dense Layers:</strong> Prevents overfitting during training and outputs calibrated probabilities using a Sigmoid/Softmax activation function.</li>
+                    </ul>
+                `
+            },
+            {
+                date: "September 28, 2026 • Generative AI & LLMs",
+                title: "Exploring RAG Pipelines, Transformers & Attention Mechanisms in Modern LLMs",
+                content: `
+                    <p>While Large Language Models (LLMs) built on the Transformer architecture excel at reasoning, they are limited by static training cutoffs. Retrieval-Augmented Generation (RAG) bridges this gap by connecting LLMs to external vector knowledge bases.</p>
+                    <h4 class="text-white font-semibold pt-2">How RAG & Self-Attention Work Together:</h4>
+                    <ul class="list-disc pl-5 space-y-1.5">
+                        <li><strong>Self-Attention Mechanism:</strong> Computes attention weights across all tokens in a sequence, allowing the model to capture long-range contextual dependencies.</li>
+                        <li><strong>Semantic Retrieval:</strong> User queries are embedded into high-dimensional vectors to fetch relevant document chunks before generation.</li>
+                        <li><strong>Grounded Generation:</strong> By injecting retrieved context directly into the prompt, the LLM generates accurate, verifiable responses with minimal hallucination.</li>
+                    </ul>
+                `
+            }
+        ];
+
+        function openBlogModal(index) {
+            const post = blogPosts[index];
+            document.getElementById('modal-date').innerText = post.date;
+            document.getElementById('modal-title').innerText = post.title;
+            document.getElementById('modal-content').innerHTML = post.content;
+            document.getElementById('blog-modal').classList.remove('hidden');
+        }
+
+        function closeBlogModal() {
+            document.getElementById('blog-modal').classList.add('hidden');
+        }
+    </script>
 </body>
 </html>
